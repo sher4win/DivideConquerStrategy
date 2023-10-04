@@ -1,4 +1,6 @@
 //quick sort main.c
+
+/*
 #include <stdio.h>
 #include <stdlib.h>
 #include "quick_sort.h"
@@ -18,3 +20,26 @@ int main() {
 
     return 0;
 }
+*/
+
+#include <stdio.h>
+#include "quick_sort.h"
+
+int main() {
+    const char* inputFilename = "inputQS.csv";
+    const char* outputFilename = "outputQS.csv";
+    int keys[100]; // Assuming a maximum of 100 entries
+    char words[100][100]; // Assuming a maximum of 100 entries
+    int numEntries;
+
+    readCSV(inputFilename, keys, words, &numEntries);
+
+    quicksort(keys, words, 0, numEntries - 1);
+
+    writeCSV(outputFilename, keys, words, numEntries);
+
+    printf("CSV file sorted and saved as %s\n", outputFilename);
+
+    return 0;
+}
+
